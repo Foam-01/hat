@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ระบบตรวจจับหมวกกันน็อก</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>ระบบตรวจจับหมวกกันน็อก</h1>
+  </header>
+
+  <section class="stats-row">
+    <div class="stat-box" onclick="showPopup('helmet')">
+      <i class="fas fa-motorcycle icon"></i>
+      สวมหมวกกันน็อก: <strong>192</strong> คน
+    </div>
+    <div class="stat-box" onclick="showPopup('noHelmet')">
+      <i class="fas fa-user-slash icon"></i>
+      ไม่สวมหมวกกันน็อก: <strong>47</strong> คน
+    </div>
+    <div class="stat-box" onclick="showPopup('plates')">
+      <i class="fas fa-car icon"></i>
+      ตรวจจับป้ายทะเบียนได้: <strong>132</strong> ป้าย
+    </div>
+    <div class="stat-box circle" onclick="showPopup('rate')">
+      <span>อัตราการสวมหมวกวันนี้</span>
+      <div class="progress">
+        <div class="value">80%</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="main-grid">
+    <div class="chart-box">
+      <h3>การใช้งานหมวกกันน็อกรายวัน</h3>
+      <canvas id="dailyChart"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3>แนวโน้มการใช้งานหมวกกันน็อกรายเดือน</h3>
+      <canvas id="monthlyChart"></canvas>
+    </div>
+    <div class="map-box">
+      <h3>ตำแหน่งกล้องตรวจจับ</h3>
+      <div id="map"></div>
+    </div>
+  </section>
+
+  <!-- Popup -->
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <div id="popup-body"></div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
